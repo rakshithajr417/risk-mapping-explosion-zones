@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Threat Zone Analysis Result</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Hazard Zone Analysis Result</h1>
+    <button onclick="goBack()">← Back to Search</button>
+  </header>
+  <main>
+    <div id="resultContainer" class="result-container"></div>
+    <div id="evacuationDetails" class="result-container"></div>
+    <div id="map" style="height: 400px;"></div>
+  </main>
+  <footer>
+    <p>© 2025 Indian Hazard Response Software Initiative</p>
+  </footer>
+  <script src="result.js"></script>
+</body>
+</html>
