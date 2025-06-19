@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hazard Threat Zone Mapping - India</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Ignition Watch</h1>
+  </header>
+  <main>
+    <section class="search-section">
+      <h2>Search Hazardous Location</h2>
+      <input type="text" id="locationInput" placeholder="Enter Refinery or Storage Facility Name" />
+      <button onclick="redirectToResultPage()">Search</button>
+    </section>
+
+    <section class="map-preview">
+  
+      
+      <div id="map" style="height: 400px;"></div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Indian Hazard Response Software Initiative</p>
+  </footer>
+
+  <script>
+    const previewMap = L.map('map').setView([21.7679, 78.8718], 5);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(previewMap);
+
+    const markers = Object.entries({
+      "Jamnagar Refinery (Oil) - Gujarat": [22.4666, 70.0666],
+      "Panipat Refinery (Oil) - Haryana": [29.3909, 76.9635],
+      "Paradip Refinery (Oil) - Odisha": [20.3167, 86.6167],
+      "Bina Refinery (Oil) - Madhya Pradesh": [24.2000, 78.2000],
+      "Mumbai Refinery (Oil) - Maharashtra": [19.0760, 72.8777],
+      "Vadinar Refinery (Oil) - Gujarat": [22.3081, 69.6111],
+      "Mangalore Refinery (Oil) - Karnataka": [12.8732, 74.8421],
+      "Koyali Refinery (Oil) - Gujarat": [22.3600, 73.1700],
+      "Haldia Refinery (Oil) - West Bengal": [22.0333, 88.0633],
+      "Numaligarh Refinery (Oil) - Assam": [26.6012, 93.7750],
+      "Hazira Gas Processing Complex (Gas) - Gujarat": [21.1167, 72.6667],
+      "Dabhol LNG Terminal (Gas) - Maharashtra": [17.5833, 73.2000],
+      "Dahej LNG Terminal (Gas) - Gujarat": [21.7000, 72.5000],
+      "Kochi LNG Terminal (Gas) - Kerala": [9.9312, 76.2673]
+    });
+
+    markers.forEach(([name, [lat, lon]]) => {
+      L.marker([lat, lon])
+        .addTo(previewMap)
+        .bindPopup(`<strong>${name}</strong>`);
+    });
+
+    function redirectToResultPage() {
+      const location = document.getElementById("locationInput").value;
+      localStorage.setItem("selectedRefinery", location);
+      window.location.href = "result.html";
+    }
+  </script>
+</body>
+</html>
